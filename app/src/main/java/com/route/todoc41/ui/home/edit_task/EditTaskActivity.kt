@@ -1,18 +1,13 @@
 package com.route.todoc41.ui.home.edit_task
 
-import android.app.DatePickerDialog
-import android.app.TimePickerDialog
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.route.todoc41.database.MyDatabase
 import com.route.todoc41.database.dao.TasksDao
 import com.route.todoc41.database.entity.Task
 import com.route.todoc41.databinding.ActivityEditTaskBinding
 import com.route.todoc41.model.AppConstant
-import com.route.todoc41.ui.home.fragments.AddTaskFragment.OnTaskAdded
 import com.route.todoc41.ui.util.clearDate
 import com.route.todoc41.ui.util.clearSeconds
 import com.route.todoc41.ui.util.clearTime

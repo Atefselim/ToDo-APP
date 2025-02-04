@@ -53,12 +53,7 @@ class TasksAdapter:RecyclerView.Adapter<TasksAdapter.TaskViewHolder>() {
            calendar.timeInMillis = task.time
            val hr = calendar.get(Calendar.HOUR)
            val minutes = calendar.get(Calendar.MINUTE)
-
            binding.time.text = getFormattedTime(hr, minutes)
-           binding.root.setOnClickListener {
-               onTaskClickListener?.onTaskClick(task, position)
-           }
-
        }
 
        fun taskIsDone(isDone: Boolean) {
@@ -88,10 +83,12 @@ class TasksAdapter:RecyclerView.Adapter<TasksAdapter.TaskViewHolder>() {
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         val task = tasksList[position]
         holder.bind(task,position)
+        holder.binding.root.setOnClickListener {
+            onTaskClickListener?.onTaskClick(task, position)
+        }
         holder.taskIsDone(task.isDone)
         holder.binding.swipeLayout.close()
-        onDeleteBtnClickListener?.let {
-            holder.binding.swipeLayout.setOnActionsListener(object :SwipeActionsListener{
+        holder.binding.swipeLayout.setOnActionsListener(object :SwipeActionsListener{
                 override fun onOpen(direction: Int, isContinuous: Boolean) {
                     holder.binding.leftView.isClickable = true
                     if (direction == SwipeLayout.RIGHT) {
@@ -106,19 +103,12 @@ class TasksAdapter:RecyclerView.Adapter<TasksAdapter.TaskViewHolder>() {
                 }
 
             })
-        }
-        onBtnDoneClickListener.let {
-            holder.binding.btnTaskIsDone.setOnClickListener {
+
+        holder.binding.btnTaskIsDone.setOnClickListener {
                 onBtnDoneClickListener?.onBtnDoneClick(task,position)
             }
-        }
+
 
     }
-    @SuppressLint("NotifyDataSetChanged")
-    fun deleteItem(adapterPosition: Int) {
-        tasksList.removeAt(adapterPosition)
-        notifyItemRemoved(adapterPosition)
-        notifyDataSetChanged()
 
-    }
 }
