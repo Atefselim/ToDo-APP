@@ -17,6 +17,7 @@ import com.route.todoc41.ui.util.showTimePickerDialog
 import java.util.Calendar
 
 
+@Suppress("DEPRECATION")
 class EditTaskActivity : AppCompatActivity() {
     lateinit var dao: TasksDao
     lateinit var binding: ActivityEditTaskBinding
