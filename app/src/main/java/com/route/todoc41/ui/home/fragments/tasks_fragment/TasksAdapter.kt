@@ -114,11 +114,5 @@ class TasksAdapter:RecyclerView.Adapter<TasksAdapter.TaskViewHolder>() {
         }
 
     }
-    @SuppressLint("NotifyDataSetChanged")
-    fun deleteItem(adapterPosition: Int) {
-        tasksList.removeAt(adapterPosition)
-        notifyItemRemoved(adapterPosition)
-        notifyDataSetChanged()
 
-    }
 }
