@@ -83,7 +83,7 @@ class TasksAdapter:RecyclerView.Adapter<TasksAdapter.TaskViewHolder>() {
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         val task = tasksList[position]
         holder.bind(task,position)
-        holder.binding.root.setOnClickListener {
+        holder.binding.dragItem.setOnClickListener {
             onTaskClickListener?.onTaskClick(task, position)
         }
         holder.taskIsDone(task.isDone)
